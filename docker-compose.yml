@@ -1,0 +1,26 @@
+version: "3"
+services:
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    ports:
+      - "5001:5001"
+  testrpc:
+    build:
+      context: ./block
+    command:
+      [
+        "./node_modules/.bin/ganache-cli",
+        "--host",
+        "0.0.0.0",
+        "--db",
+        "data/ganache-clli_persist",
+        "--seed",
+        "20170812",
+        "--accounts",
+        "42",
+        "--debug",
+      ]
+    volumes:
+      - .:/app
+    ports:
+      - "8545:8545"

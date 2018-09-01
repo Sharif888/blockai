@@ -1,0 +1,19 @@
+{
+  "name": "@openmined/sonar",
+  "version": "0.0.1",
+  "description": "Federated Deep Learning on the Ethereum Blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test:truffle": "truffle test",
+    "test": "npm run test:truffle",
+    "deploy": "truffle migrate --reset",
+    "extract-abi": "./bin/extract-abi build/contracts/ModelRepository.json > build/ModelRepository.abi",
+    "postinstall": "truffle compile && npm run extract-abi && npm run deploy"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ganache-cli": "^6.1.8",
+    "truffle": "^4.1.14"
+  }
+}
